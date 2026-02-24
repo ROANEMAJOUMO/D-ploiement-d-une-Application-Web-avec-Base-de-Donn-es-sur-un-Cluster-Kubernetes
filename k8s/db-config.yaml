@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-config
+data:
+  POSTGRES_DB: ma_base_de_donnees
+  POSTGRES_USER: admin_user

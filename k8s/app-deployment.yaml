@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - name: node-app
+        image: mon-app-web:v2
+        imagePullPolicy: Never # Très important : dit à K8s d'utiliser l'image locale
+        ports:
+        - containerPort: 3000
+        env:
+        # L'hôte est le nom du Service de la DB que nous avons créé
+        - name: DB_HOST
+          value: "db-service"
+        # On récupère le reste depuis nos ConfigMaps et Secrets
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: db-config
+              key: POSTGRES_DB
+        - name: DB_USER
+          valueFrom:
+            configMapKeyRef:
+              name: db-config
+              key: POSTGRES_USER
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: POSTGRES_PASSWORD
