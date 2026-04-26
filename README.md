@@ -1,126 +1,197 @@
-🚀 Déploiement d’une Application Web avec Base de Données sur un Cluster Kubernetes
-📌 Présentation du projet
+# 🚀 Déploiement d’une Application Web avec Base de Données sur Kubernetes
 
-Ce projet démontre le déploiement complet d'une application web conteneurisée avec sa base de données sur un cluster Kubernetes, en appliquant des bonnes pratiques DevOps et Cloud Native :
+---
 
-Conteneurisation de l'application avec Docker
-Orchestration via Kubernetes
-Déploiement multi-services (frontend, backend, base de données)
-Gestion des volumes persistants
-Configuration avec ConfigMaps et Secrets
-Exposition de l’application via Services / Ingress
-Scalabilité et haute disponibilité
-🎯 Objectifs
+## 📖 Overview
 
-Ce projet a pour but de :
+Ce projet met en œuvre le déploiement complet d’une application web conteneurisée avec base de données sur un cluster Kubernetes en suivant les bonnes pratiques **Cloud Native** et **DevOps**.
 
-Déployer une application web dans un environnement Kubernetes
-Connecter l’application à une base de données persistante
-Mettre en pratique les concepts DevOps et orchestration
-Automatiser et fiabiliser le déploiement
-Simuler une architecture proche d’un environnement production
-🏗 Architecture
+### 🎯 Objectifs du projet
 
-Architecture du projet :
+- Déployer une application scalable sur Kubernetes  
+- Connecter une base de données persistante  
+- Mettre en place une architecture proche production  
+- Automatiser et sécuriser le déploiement  
+- Expérimenter l’orchestration et la haute disponibilité  
 
-Utilisateur
-   │
-Ingress / LoadBalancer
-   │
-Application Web (Pods)
-   │
-Service Kubernetes
-   │
-Base de Données (StatefulSet)
-   │
-Persistent Volume
-Stack utilisée
-Kubernetes
-Docker
-Base de données SQL/NoSQL (à préciser)
-YAML manifests
-Ingress Controller
-Persistent Volumes
-ConfigMaps & Secrets
-📂 Structure du projet
+---
+
+# 🏗 Architecture
+
+```mermaid
+graph TD
+User --> Ingress
+Ingress --> Frontend
+Frontend --> Backend
+Backend --> Database[(Database)]
+Database --> PersistentVolume[(Persistent Volume)]
+```
+
+---
+
+# ⚙️ Stack Technique
+
+| Technologie | Rôle |
+|-----------|------|
+| Kubernetes | Orchestration |
+| Docker | Conteneurisation |
+| Ingress | Routage HTTP |
+| ConfigMaps | Configuration |
+| Secrets | Gestion des credentials |
+| Persistent Volumes | Stockage persistant |
+
+---
+
+# 📂 Structure du Projet
+
+```bash
 .
 ├── app/
-│   ├── frontend/
-│   └── backend/
+│ ├── frontend/
+│ └── backend/
 │
 ├── k8s/
-│   ├── deployment.yaml
-│   ├── service.yaml
-│   ├── ingress.yaml
-│   ├── configmap.yaml
-│   ├── secret.yaml
-│   └── database/
-│       ├── statefulset.yaml
-│       └── pvc.yaml
+│ ├── deployment.yaml
+│ ├── service.yaml
+│ ├── ingress.yaml
+│ ├── configmap.yaml
+│ ├── secret.yaml
+│ └── database/
+│    ├── statefulset.yaml
+│    └── pvc.yaml
 │
 └── README.md
-⚙️ Déploiement
-1 — Cloner le projet
-git clone https://github.com/votre-user/votre-repo.git
-cd votre-repo
-2 — Déployer sur le cluster
+```
+
+---
+
+# 🚀 Déploiement
+
+## Cloner le projet
+
+```bash
+git clone https://github.com/username/repo.git
+cd repo
+```
+
+## Déployer l’infrastructure
+
+```bash
 kubectl apply -f k8s/
-3 — Vérifier les ressources
+```
+
+## Vérifier les ressources
+
+```bash
 kubectl get pods
-kubectl get svc
+kubectl get services
 kubectl get ingress
-📈 Fonctionnalités Kubernetes mises en œuvre
+```
 
-✅ Deployments
-✅ Services
-✅ StatefulSets
-✅ Persistent Volumes / PVC
-✅ Secrets
-✅ ConfigMaps
-✅ Ingress
-✅ Scaling horizontal
-✅ Rolling Updates
+---
 
-🔐 Gestion des données et sécurité
+# 🔥 Fonctionnalités mises en œuvre
 
-Le projet inclut :
+✔ Multi-Pods Deployment  
+✔ Stateful Database  
+✔ Persistent Storage  
+✔ Secrets & ConfigMaps  
+✔ Ingress Routing  
+✔ Rolling Updates  
+✔ Horizontal Scaling  
+✔ Haute Disponibilité
 
-Persistance des données de la base
-Isolation des composants
-Gestion sécurisée des credentials avec Kubernetes Secrets
-Séparation configuration / code
-🚀 Scalabilité
+---
 
-Exemple de scaling :
+# 📈 Scaling
 
+```bash
 kubectl scale deployment web-app --replicas=3
+```
 
-Le cluster distribue automatiquement la charge entre plusieurs pods.
+Kubernetes distribue automatiquement la charge entre plusieurs instances.
 
-📸 Démonstration
+---
 
-(Ajouter ici des captures d’écran ou GIFs)
+# 🔐 Sécurité
 
-Exemples :
+- Isolation des services  
+- Variables sensibles via Secrets  
+- Persistance sécurisée des données  
+- Architecture découplée frontend / backend / database
 
-Dashboard Kubernetes
-Pods en exécution
-Application déployée
-Monitoring (si Prometheus/Grafana)
-🧠 Compétences démontrées
+---
+
+# 📸 Aperçu
+
+## Application déployée
+<img width="900" alt="demo" src="assets/demo.png">
+
+## Cluster Kubernetes
+<img width="900" alt="cluster" src="assets/cluster.png">
+
+*(Ajouter tes screenshots ici)*
+
+---
+
+# 🧠 Compétences démontrées
 
 Ce projet met en avant :
 
-Kubernetes Administration
-Déploiement Cloud Native
-DevOps / CI-CD
-Containerisation
-Réseau Kubernetes
-Gestion des volumes et persistance
-Infrastructure as Code
-🔮 Améliorations possibles
-Pipeline CI/CD avec GitHub Actions ou GitLab CI
-Monitoring avec Prometheus + Grafana
-Helm Charts
-Autoscaling (HPA)
-Déploiement sur Amazon Web Services / Google Cloud / Microsoft
+- Kubernetes Administration  
+- Containerization  
+- DevOps Engineering  
+- Infrastructure as Code  
+- Cloud Native Architecture  
+- Networking & Storage  
+- Scalability Concepts
+
+---
+
+# 🔮 Améliorations futures
+
+- CI/CD avec GitHub Actions  
+- Helm Charts  
+- Monitoring Prometheus + Grafana  
+- Auto-scaling (HPA)  
+- Déploiement cloud (AWS / GCP / Azure)
+
+---
+
+## 📊 Commandes utiles
+
+```bash
+# Voir les pods
+kubectl get pods
+
+# Logs application
+kubectl logs <pod-name>
+
+# Accès shell pod
+kubectl exec -it <pod-name> -- bash
+```
+
+---
+
+# 👨‍💻 Auteur
+
+**Ton Nom**  
+Projet DevOps / Kubernetes Portfolio
+
+---
+
+## ⭐ Support
+
+Si le projet te plaît :
+
+```bash
+Fork 🍴
+Star ⭐
+Contribute 🚀
+```
+
+---
+
+<p align="center">
+Built with ❤️ using Kubernetes & DevOps
+</p>
