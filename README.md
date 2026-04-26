@@ -190,8 +190,3 @@ Star ⭐
 Contribute 🚀
 ```
 
----
-
-<p align="center">
-Built with ❤️ using Kubernetes & DevOps
-</p>
